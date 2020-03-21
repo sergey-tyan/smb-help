@@ -1,0 +1,16 @@
+// Place all the styles related to the Welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+@import 'bootstrap/dist/css/bootstrap';
+
+.navbar {
+  background-color: #fdf6ea !important;
+}
+
+.navbar-brand {
+  font-size: 3rem;
+}
+
+h1 {
+  color: red;
+}
