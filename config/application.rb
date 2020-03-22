@@ -13,11 +13,18 @@ require "action_text/engine"
 require "action_view/railtie"
 require "action_cable/engine"
 require "sprockets/railtie"
+
+require "google/apis/sheets_v4"
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+
+APPLICATION_NAME = "Google Sheets API Ruby Quickstart".freeze
+CREDENTIALS_PATH = "credentials.json".freeze
+TOKEN_PATH = "token.yaml".freeze
+SCOPE = Google::Apis::SheetsV4::AUTH_SPREADSHEETS_READONLY
 
 module Corona
   class Application < Rails::Application
