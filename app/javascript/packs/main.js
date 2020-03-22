@@ -49,9 +49,9 @@ function showFilteredItems() {
       const queryString = item['Ссылка на 2гис'];
       try {
         const items = queryString
-          .split('geo/')[1]
-          .split('?m')[0]
-          .split('/')[1];
+          .split('/')
+          .pop()
+          .split('?m=')[0];
 
         let [lat, lng] = items.split('%2C');
         lat = parseFloat(lat);

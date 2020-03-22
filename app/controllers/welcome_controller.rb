@@ -25,7 +25,7 @@ class WelcomeController < ApplicationController
         approved = false
         headers.each_with_index do |header, index|
           if header == 'approved'
-            approved = (row[index] == 'y')
+            approved = (row[index] == 'yes')
             puts "approved #{approved}"
           end
           if header == 'Категории'
