@@ -1,5 +1,10 @@
 <h1>quentino quarantino</h1>
-<body>
-	<div id="map" style="width:60vw; height:60vh"></div>
-	<%= @asdasd %>
-</body>
+<div class="categories"></div>
+<div id="map" style="width:60vw; height:60vh"></div>
+
+<% content_for :page_js do %>
+  <script>
+		window.items = <%= @smbs.to_json.html_safe %>;
+		window.categories = <%= @categories.to_json.html_safe %>
+	</script>
+<% end %>

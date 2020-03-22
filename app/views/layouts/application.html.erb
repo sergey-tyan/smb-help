@@ -14,5 +14,6 @@
     <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
+  <%= yield :page_js %>
   <%= javascript_pack_tag 'main', 'data-turbolinks-track': 'reload' %>
 </html>

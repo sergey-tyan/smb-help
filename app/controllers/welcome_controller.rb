@@ -9,13 +9,40 @@ class WelcomeController < ApplicationController
     service.client_options.application_name = APPLICATION_NAME
     service.authorization = authorize
     spreadsheet_id = ENV['SPREADSHEET_ID']
-    range = "Sheet1!A2:G"
+    range = "Sheet1!A:H"
     response = service.get_spreadsheet_values spreadsheet_id, range
     
     puts "No data found." if response.values.empty?
-    response.values.each do |row|
-      @asdasd = row[0]
+    @smbs = [];
+    headers = []
+    @categories = []
+    response.values.each_with_index do |row, index|
+      if index == 0
+        headers = row
+        puts "headers #{headers}"
+      else
+        smb = {}
+        approved = false
+        headers.each_with_index do |header, index|
+          if header == 'approved'
+            approved = (row[index] == 'y')
+            puts "approved #{approved}"
+          end
+          if header == 'Категории'
+            cats = row[index].split(',')
+            cats.each do |cat|
+              if !@categories.include? cat.strip
+                @categories << cat.strip
+              end
+            end
+          end
+          smb[header] = row[index]
+        end
+        @smbs.push(smb) if approved
+      end
     end
+    puts @categories
+    puts @smbs
   end
 
   private
