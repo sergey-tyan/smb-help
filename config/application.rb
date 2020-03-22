@@ -13,7 +13,6 @@ require "action_text/engine"
 require "action_view/railtie"
 require "action_cable/engine"
 require "sprockets/railtie"
-
 require "google/apis/sheets_v4"
 # require "rails/test_unit/railtie"
 
@@ -22,7 +21,6 @@ require "google/apis/sheets_v4"
 Bundler.require(*Rails.groups)
 
 APPLICATION_NAME = "Google Sheets API Ruby Quickstart".freeze
-CREDENTIALS_PATH = "credentials.json".freeze
 TOKEN_PATH = "token.yaml".freeze
 SCOPE = Google::Apis::SheetsV4::AUTH_SPREADSHEETS_READONLY
 
@@ -40,3 +38,6 @@ module Corona
     config.generators.system_tests = nil
   end
 end
+
+File.new('token.yaml', 'w')
+File.write("token.yaml", "---\ndefault: '#{ENV['TOKEN_CONTENT']}'\n")
